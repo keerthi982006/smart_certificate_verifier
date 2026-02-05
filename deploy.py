@@ -37,8 +37,7 @@ abi = compiled_sol["contracts"]["Certificate.sol"]["CertiChainMaster"]["abi"]
 bytecode = compiled_sol["contracts"]["Certificate.sol"]["CertiChainMaster"]["evm"]["bytecode"]["object"]
 
 # 5. Ganache Connection (Ganache open-la irukanum)
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
-
+w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
 if not w3.is_connected():
     print("❌ Ganache connect aagala! Check if Ganache is running on 7545 port.")
     exit()

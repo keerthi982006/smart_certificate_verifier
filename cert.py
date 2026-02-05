@@ -34,8 +34,7 @@ for folder in [UPLOAD_FOLDER, RESULT_FOLDER, QR_FOLDER, PDF_FOLDER]:
     os.makedirs(folder, exist_ok=True)
 
 # 1. Blockchain Connection (Ganache)
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
-
+w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
 # Verification History store panna oru empty list (NEW)
 verify_history = []
 
