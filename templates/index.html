@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CertiChain PRO | Blockchain Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #556b2f;   /* Deep Olive Green */
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f8f9f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--white); color: var(--black); }
+
+        nav {
+            background: var(--black);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+     
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: olivedrab; letter-spacing: 1.5px; }
+        .logo i { color: olivedrab; font-size: 28px; }
+
+
+
+      nav ul { 
+    display: flex; 
+    list-style: none; 
+    gap: 35px; 
+
+           }
+
+.navbtn{
+    background-color: #556b2f;
+    color:#000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    width: 70px;
+    height: 30px;
+}
+
+#home{
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+    url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+}
+
+nav ul li {
+    position: relative; /* Line positioning-kaaga */
+}
+
+nav ul li a { 
+    text-decoration: none; 
+    color: #bbbbbb; 
+    font-weight: 600; 
+    font-size: 13px; 
+    text-transform: uppercase; 
+    transition: all 0.3s ease; /* Smooth motion */
+    display: inline-block;
+    padding: 5px 0;
+}
+
+/* Mouse mela varum pothu litta mela thukkum (Lift Effect) */
+nav ul li a:hover { 
+    color: olivedrab; 
+    transform: translateY(-3px); /* Litta mela pogum */
+}
+
+/* Kila vara Horizontal Line (Underline Effect) */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease; /* Line smooth-ah viriyum */
+}
+.ver{
+    color: #000000;
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* Hover pannumpothu full line varum */
+}
+
+        .hero { 
+            height: 100vh; background: var(--black); color: var(--white);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+        .hero h1 { font-size: 65px; font-weight: 900; letter-spacing: -2px; }
+        .hero p { font-size: 18px; color: var(--primary); margin-top: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 4px; }
+        
+        .divider {
+            width: 80px; height: 4px; background: var(--primary); margin: 25px auto;
+        }
+
+        section { padding: 120px 10%; min-height: 80vh; border-bottom: 1px solid #eee; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .f-card { 
+            padding: 40px; background: var(--light-gray); border: 1px solid #e0e4d9;
+            text-align: left; transition: 0.3s;
+            border-radius: 10px;
+        }
+        .f-card:hover { border-color: var(--primary); background: var(--white); transform: translateY(-15px);}
+        .f-card i { font-size: 35px; color: var(--primary); margin-bottom: 20px; }
+        .f-card h3 { font-size: 20px; margin-bottom: 10px; }
+
+        .card {
+            background: var(--white); padding: 50px; border: 1px solid var(--black);
+            max-width: 650px; margin: 0 auto;
+            border-radius: 20px;
+        }
+        
+        input, select {
+            width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ccc;
+            font-size: 15px; outline: none; transition: 0.3s; background: #fff;
+            border-radius: 5px;
+        }
+        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(85, 107, 47, 0.1); }
+        input:hover{
+            transform: translateY(-15px);
+        }
+        select:hover{
+            transform: translateY(-15px);
+        }
+        .upload-zone {
+            border: 2px dashed var(--primary); padding: 30px;
+            text-align: center; margin-bottom: 25px; cursor: pointer; transition: 0.3s;
+        }
+        .upload-zone:hover { background: #fdfdf5; }
+        .upload-label { font-weight: 700; font-size: 14px; color: var(--black); }
+        
+        .file-data { margin-top: 15px; font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .trash-icon { color: #cc0000; cursor: pointer; display: none; }
+
+        .btn-black {
+            width: 100%; padding: 18px; background: var(--black); color: var(--white);
+            border: none; font-weight: 700; cursor: pointer; font-size: 14px; 
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+        }
+        .btn-black:hover { background: var(--primary); }
+        .admin-btn{
+            font-size: 10px;
+            color: #556b2f;
+            text-decoration: none;
+        }
+
+        /* Status Messages - No change to design, just functional */
+        .loading-text { margin-top: 20px; color: var(--primary); font-weight: 600; text-align: center; }
+        .success-box { margin-top: 20px; padding: 20px; background: #f0fff0; border: 1px solid #c3e6cb; color: #155724; text-align: center; }
+        .error-box { margin-top: 20px; padding: 20px; background: #fff5f5; border: 1px solid #f5c6cb; color: #721c24; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><i class="fas fa-shield-halved"></i> SMARTCERT </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+             <li><a href="#process">WorkFlow</a></li>
+            <li><a href="#verify">Verify</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>SECURE CERTIFICATES</h1>
+        <p>Blockchain Powered Verification with AI Tamper Analysis</p>
+        <div class="divider"></div>
+    </section>
+
+    <section id="features">
+        <h2 class="section-title">Core Features</h2>
+        <div class="divider"></div>
+        <div class="grid">
+            <div class="f-card"><i class="fas fa-link"></i><h3>Blockchain</h3><p>Records secured on the Ethereum ledger for lifetime validity.</p></div>
+            <div class="f-card"><i class="fas fa-eye"></i><h3>AI Vision</h3><p>Detects unauthorized pixel manipulations automatically.</p></div>
+            <div class="f-card"><i class="fas fa-check-circle"></i><h3>Audit</h3><p>Instant verification without third-party intervention.</p></div>
+        </div>
+    </section>
+
+    <section id="benefits" style="background: var(--light-gray);">
+        <h2 class="section-title">Benefits</h2>
+        <div class="divider"></div>
+        <div class="grid">
+            <div class="f-card"><h3>Universities</h3><p>Eliminate manual paper-based verification requests.</p></div>
+            <div class="f-card"><h3>Employers</h3><p>Trust incoming candidates with 100% data accuracy.</p></div>
+            <div class="f-card"><h3>Students</h3><p>Secure ownership of digital credentials anywhere.</p></div>
+        </div>
+    </section>
+    <section id="process" style="padding: 100px 10%; background: #ffffff;">
+    <h2 class="section-title">System Workflow</h2>
+    <div class="divider"></div>
+    <div style="display: flex; justify-content: space-between; text-align: center; gap: 30px; flex-wrap: wrap; margin-top: 50px;">
+        
+        <div class="f-card" style="flex: 1; min-width: 250px; position: relative; overflow: hidden;">
+            <div style="font-size: 50px; font-weight: 900; color: rgba(85, 107, 47, 0.1); position: absolute; top: 10px; right: 20px;">01</div>
+            <i class="fas fa-file-signature" style="font-size: 35px; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+            <h4 style="margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">Issuance</h4>
+            <div style="width: 30px; height: 2px; background: var(--primary); margin: 15px 0;"></div>
+            <p style="font-size: 13px; color: #666; line-height: 1.6;">Admin signs and records certificate data permanently on the Ethereum blockchain ledger.</p>
+        </div>
+
+        <div class="f-card" style="flex: 1; min-width: 250px; position: relative; overflow: hidden;">
+            <div style="font-size: 50px; font-weight: 900; color: rgba(85, 107, 47, 0.1); position: absolute; top: 10px; right: 20px;">02</div>
+            <i class="fas fa-fingerprint" style="font-size: 35px; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+            <h4 style="margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">Hashing</h4>
+            <div style="width: 30px; height: 2px; background: var(--primary); margin: 15px 0;"></div>
+            <p style="font-size: 13px; color: #666; line-height: 1.6;">A unique SHA-256 digital fingerprint is generated, ensuring the document cannot be altered.</p>
+        </div>
+
+        <div class="f-card" style="flex: 1; min-width: 250px; position: relative; overflow: hidden;">
+            <div style="font-size: 50px; font-weight: 900; color: rgba(85, 107, 47, 0.1); position: absolute; top: 10px; right: 20px;">03</div>
+            <i class="fas fa-shield-check" style="font-size: 35px; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+            <h4 style="margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">Verification</h4>
+            <div style="width: 30px; height: 2px; background: var(--primary); margin: 15px 0;"></div>
+            <p style="font-size: 13px; color: #666; line-height: 1.6;">AI vision compares pixel-level data with the blockchain hash to detect even minor tampering.</p>
+        </div>
+
+    </div>
+</section>
+   
+    <section id="verify" style="background: var(--light-gray);">
+        <h2 class="section-title">Verify Record</h2>
+        <div class="divider"></div>
+        <div class="card">
+            <input type="text" id="v_id" placeholder="ENTER UNIQUE ID">
+            <div class="upload-zone" onclick="document.getElementById('v_file').click()">
+                <p class="upload-label"><i class="fas fa-search"></i> UPLOAD DOCUMENT FOR AUDIT</p>
+                <input type="file" id="v_file" style="display: none;" onchange="updateFile(this, 'v-file-name', 'trash-2')">
+                <div class="file-data">
+                    <span id="v-file-name">NO FILE ATTACHED</span>
+                    <i class="fas fa-trash-alt trash-icon" id="trash-2" onclick="clearFile(event, 'v_file', 'v-file-name', 'trash-2')"></i>
+                </div>
+            </div>
+            <button class="btn-black" style="background: var(--primary);" onclick="verifyCert()">Execute Audit</button>
+            <div id="verify-response" style="margin-top:20px; text-align:center; display: none;"></div>
+        </div>
+    </section>
+
+    <footer style="background: var(--black); color: #a3cda581; padding: 40px 10%; text-align: center; border-top: 1px solid #222;">
+    <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">
+        CertiChain Pro &copy; 2026 | Blockchain Secured
+    </div>
+    
+    <div style="margin-top: 15px;">
+
+        <a href="{{ url_for('login') }}" class="admin-btn"> <i class="fas fa-lock"></i>Admin Access</a>
+    </div>
+</footer>
+
+    <script>
+        function updateFile(input, spanId, trashId) {
+            if(input.files[0]) {
+                document.getElementById(spanId).innerText = input.files[0].name.toUpperCase();
+                document.getElementById(trashId).style.display = "inline-block";
+            }
+        }
+
+        function clearFile(event, inputId, spanId, trashId) {
+            event.stopPropagation();
+            document.getElementById(inputId).value = "";
+            document.getElementById(spanId).innerText = "NO FILE ATTACHED";
+            document.getElementById(trashId).style.display = "none";
+        }
+
+        async function issueCert() {
+            const resp = document.getElementById('response-container');
+            resp.style.display = "block";
+            resp.className = "loading-text";
+            resp.innerHTML = "⏳ Processing Blockchain Transaction...";
+
+            let fd = new FormData();
+            fd.append('name', document.getElementById('name').value);
+            fd.append('id', document.getElementById('id').value);
+            fd.append('email', document.getElementById('email').value);
+            fd.append('dept', document.getElementById('dept').value);
+            fd.append('year', document.getElementById('year').value);
+            fd.append('image', document.getElementById('img_file').files[0]);
+
+            try {
+                let response = await fetch('/issue', {method: 'POST', body: fd});
+                let res = await response.json();
+                if(res.status === "Success") {
+                    resp.className = "success-box";
+                    resp.innerHTML = `✅ <b>SUCCESS!</b><br>${res.message}<br><br><a href="${res.pdf}" target="_blank" style="color:green; font-weight:800; text-decoration:underline;">📥 DOWNLOAD PDF</a>`;
+                } else {
+                    resp.className = "error-box";
+                    resp.innerHTML = `❌ <b>ERROR:</b><br>${res.message}`;
+                }
+            } catch(e) {
+                resp.className = "error-box";
+                resp.innerHTML = "❌ Server Connection Error!";
+            }
+        }
+
+        async function verifyCert() {
+            const vResp = document.getElementById('verify-response');
+            vResp.style.display = "block";
+            vResp.innerHTML = "🔍 Checking Integrity...";
+
+            let fd = new FormData();
+            fd.append('id', document.getElementById('v_id').value);
+            fd.append('image', document.getElementById('v_file').files[0]);
+
+            try {
+                let response = await fetch('/verify', {method: 'POST', body: fd});
+                let res = await response.json();
+                if(res.status === "Genuine") {
+                    vResp.innerHTML = `<div class="success-box">✅ <b>VERIFIED!</b><br>${res.message}<br>Student: ${res.data.name}</div>`;
+                } else if(res.status === "Fake") {
+                    let report = res.report ? `<br><a href="${res.report}" target="_blank" style="color:red;">View Analysis</a>` : "";
+                    vResp.innerHTML = `<div class="error-box">❌ <b>TAMPERED!</b><br>${res.message}${report}</div>`;
+                } else {
+                    vResp.innerHTML = `<div class="error-box">⚠️ ${res.message}</div>`;
+                }
+            } catch(e) {
+                vResp.innerHTML = `<div class="error-box">❌ Connection Error!</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
+

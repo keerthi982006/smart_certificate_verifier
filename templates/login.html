@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCert | Admin Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --olive-green: #556b2f;
+            --pure-white: #ffffff;
+            --soft-gray: #f8f9fa;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-gray);
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+        }
+
+        .login-card {
+            background: var(--pure-white);
+            width: 380px; padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--olive-green);
+            text-align: center;
+        }
+
+        .university-logo {
+            color: var(--olive-green);
+            font-size: 26px; font-weight: bold; margin-bottom: 25px;
+        }
+        label{
+            color: #777;
+            font-size: medium;
+        }
+        .input-group {
+            text-align: left; margin-bottom: 20px; position: relative;
+        }
+
+        .input-group label {
+            display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%; padding: 12px; border: 1px solid #ddd;
+            border-radius: 6px; box-sizing: border-box; font-size: 14px;
+        }
+
+        /* Eye Icon Style */
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .toggle-password:hover { color: var(--olive-green); }
+
+        .login-btn {
+            width: 100%; padding: 14px;
+            background-color: var(--olive-green);
+            color: white; border: none; border-radius: 6px;
+            font-size: 16px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; margin-top: 10px;
+        }
+
+        .login-btn:hover { background-color: #3e4e22; }
+
+        .error-alert {
+            background-color: #fff0f0; color: #d9534f;
+            padding: 10px; border-radius: 4px; font-size: 13px;
+            margin-bottom: 20px; border-left: 4px solid #d9534f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="university-logo">SmartCert Admin</div>
+
+        {% if error %}
+        <div class="error-alert">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="input-group">
+                <label>USERNAME</label>
+                <input type="text" name="username" placeholder="" required>
+            </div>
+            
+            <div class="input-group">
+                <label>ADMIN SECURITY KEY</label>
+                <input type="password" name="password" id="passwordField" placeholder="••••••••" required>
+                <i class="fa-solid fa-eye toggle-password" id="toggleIcon"></i>
+            </div>
+            
+            <button type="submit" class="login-btn">AUTHENTICATE</button>
+        </form>
+    </div>
+
+    <script>
+        const toggleIcon = document.querySelector('#toggleIcon');
+        const passwordField = document.querySelector('#passwordField');
+
+        toggleIcon.addEventListener('click', function () {
+            // Password-ai text-ah mathum logic
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            
+            // Icon-ai mathum logic
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+</body>
+</html>
